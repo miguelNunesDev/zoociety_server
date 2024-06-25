@@ -2,9 +2,19 @@
 /// <reference path="../types/index.d.ts" />
 
 const WebSocket = require('ws');
+const http = require('http');
 const wss = new WebSocket.Server({ port: 3000 });
 const sessions = {};
 
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello, World!\n');
+});
+
+server.listen(8080, '0.0.0.0', () => {
+    console.log(`Server running`);
+});
 wss.on('connection', function (ws) {
 
     let clientId;
