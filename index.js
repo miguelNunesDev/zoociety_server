@@ -1,9 +1,10 @@
 // @ts-check
 /// <reference path="../types/index.d.ts" />
 
-const WebSocket = require('ws');
+const WebSocket = require('ws')
+const port = Number(process.env.PORT) || 4000;
 const http = require('https');
-const wss = new WebSocket.Server({ port: 3000 });
+const wss = new WebSocket.Server({ port });
 const sessions = {};
 
 const server = http.createServer((req, res) => {
@@ -12,7 +13,7 @@ const server = http.createServer((req, res) => {
     res.end('Hello, World!\n');
 });
 
-server.listen(8080, '0.0.0.0', () => {
+server.listen(port, '0.0.0.0', () => {
     console.log(`Server running`);
 });
 wss.on('connection', function (ws) {
