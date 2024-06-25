@@ -2,7 +2,7 @@
 /// <reference path="../types/index.d.ts" />
 
 const WebSocket = require('ws');
-const http = require('http');
+const http = require('https');
 const wss = new WebSocket.Server({ port: 3000 });
 const sessions = {};
 
